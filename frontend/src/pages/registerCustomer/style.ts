@@ -42,3 +42,20 @@ export const Banner = styled.img`
   height: 100%;
   border-radius: 12px;
 `;
+
+export const FormContainer = styled.div`
+  width: 50%;
+  height: 100%;
+  padding: 15px 30px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const FormTitle = styled.h2`
+  color: white;
+  font-weight: bold;
+  text-align: center;
+`;

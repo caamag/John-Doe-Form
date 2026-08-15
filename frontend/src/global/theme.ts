@@ -4,6 +4,7 @@ const palette = {
   darkBrackground: "rgb(43, 39, 56)",
   inputBackground: "rgb(59, 54, 76)",
   blackShadow: "rgb(40,40,40)",
+  lightText: "rgb(160,160,160)",
 };
 
 export const theme = {
