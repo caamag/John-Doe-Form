@@ -14,12 +14,14 @@ export const RegisteCustomer = () => {
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
   const [favoriteColor, setFavoriteColor] = useState<string | null>(null);
+  const [observations, setObservations] = useState<string>("");
 
   const payload = {
     name,
     email,
     cpf,
     favoriteColor: favoriteColor ?? "",
+    observations,
   };
 
   return (
@@ -54,6 +56,14 @@ export const RegisteCustomer = () => {
             label="CPF *"
             value={cpf}
             onChange={(event) => setCpf(formatCpf(event.target.value))}
+          />
+
+          <textarea
+            placeholder="Observations: "
+            value={observations}
+            onChange={(e) => {
+              setObservations(e.target.value);
+            }}
           />
 
           <ColorPicker value={favoriteColor} onChange={setFavoriteColor} />

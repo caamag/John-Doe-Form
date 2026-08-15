@@ -12,4 +12,5 @@ export interface CreateUserData {
   email: string;
   cpf: string;
   favoriteColor: string;
+  observations: string;
 }

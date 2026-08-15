@@ -3,5 +3,6 @@ export interface User {
   name: string;
   email: string;
   cpf: string;
+  observations: string;
   favoriteColor: string;
 }

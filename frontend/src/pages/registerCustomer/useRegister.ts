@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { type CreateUserData } from "../../@types/users";
 import { createUser } from "../../services/users";
+import axios from "axios";
 
 export const useRegister = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -44,8 +45,14 @@ export const useRegister = () => {
       });
 
       toast.success("User successfully registered.");
-    } catch (error) {
-      console.error(error);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        console.error(error);
+        if (error.status === 409) {
+          toast.error("Some data already registered to another account.");
+        }
+      }
+
       toast.error("Unexpected error. Please try again later.");
     } finally {
       setLoading(false);

@@ -52,10 +52,30 @@ export const FormContainer = styled.div`
   gap: 1rem;
   flex-direction: column;
   justify-content: center;
+
+  textarea {
+    background-color: ${theme.palette.lightBackground};
+    border-radius: 5px;
+    border: none;
+    padding: 15px;
+    color: white;
+    min-height: 150px;
+    resize: none;
+
+    &::placeholder {
+      color: ${theme.palette.lightText};
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
 `;
 
 export const FormTitle = styled.h2`
   color: white;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 15px;
 `;
