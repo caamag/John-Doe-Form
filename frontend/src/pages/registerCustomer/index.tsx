@@ -4,35 +4,22 @@ import banner from "../../assets/banner.jpg";
 import { Input } from "../../components/UI/input";
 import { ColorPicker } from "../../components/ColorPicker";
 import { Button } from "../../components/UI/button";
+import { useRegister } from "./useRegister";
+import { formatCpf } from "../../utils/formatCpf";
 
 export const RegisteCustomer = () => {
-  const [fullName, setFullName] = useState("");
+  const { onSubmit, loading } = useRegister();
+
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
-  const [color, setColor] = useState<string | null>(null);
+  const [favoriteColor, setFavoriteColor] = useState<string | null>(null);
 
-  const onSubmit = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const cpfNumbers = cpf.replace(/\D/g, "");
-
-    const hasEmptyFields = [fullName, email, cpf, color].some(
-      (value) => !value?.trim(),
-    );
-
-    const isValidEmail = emailRegex.test(email);
-    const isValidCpf = cpfNumbers.length === 11;
-
-    if (hasEmptyFields || !isValidEmail || !isValidCpf) {
-      console.log("Formulário inválido");
-      return;
-    }
-
-    console.log({
-      fullName,
-      email,
-      cpf: cpfNumbers,
-      color,
-    });
+  const payload = {
+    name,
+    email,
+    cpf,
+    favoriteColor: favoriteColor ?? "",
   };
 
   return (
@@ -49,8 +36,8 @@ export const RegisteCustomer = () => {
             type="text"
             placeholder="Full name"
             label="Full name *"
-            value={fullName}
-            onChange={(event) => setFullName(event.target.value)}
+            value={name}
+            onChange={(event) => setName(event.target.value)}
           />
 
           <Input
@@ -66,13 +53,19 @@ export const RegisteCustomer = () => {
             placeholder="CPF"
             label="CPF *"
             value={cpf}
-            onChange={(event) => setCpf(event.target.value)}
+            onChange={(event) => setCpf(formatCpf(event.target.value))}
           />
 
-          <ColorPicker value={color} onChange={setColor} />
+          <ColorPicker value={favoriteColor} onChange={setFavoriteColor} />
 
-          <Button style={{ marginTop: "20px" }} onClick={onSubmit}>
-            Submit
+          <Button
+            style={{ marginTop: "20px" }}
+            onClick={() => {
+              onSubmit(payload);
+            }}
+            disabled={loading}
+          >
+            {loading ? "Loading..." : "Submit"}
           </Button>
         </_.FormContainer>
       </_.Content>
