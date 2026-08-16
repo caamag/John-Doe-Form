@@ -83,7 +83,8 @@
   "name": "João Silva",
   "email": "joao@email.com",
   "cpf": "12345678900",
-  "favoriteColor": "blue"
+  "favoriteColor": "blue",
+  "observation": "Observação do cliente"
 }</code></pre>
 
 </body>
