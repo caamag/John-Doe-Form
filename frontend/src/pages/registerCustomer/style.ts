@@ -11,9 +11,9 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 60%;
-  height: 60vh;
-  max-width: 1200px;
+  width: 80%;
+  height: 90vh;
+  max-width: 1400px;
   border-radius: 12px;
   background-color: ${theme.palette.darkBrackground};
   box-shadow: 1px 1px 50px ${theme.palette.blackShadow};
@@ -35,6 +35,10 @@ export const BannerContainer = styled.div`
   height: 100%;
   padding: 15px;
   box-sizing: border-box;
+
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 export const Banner = styled.img`
@@ -70,6 +74,14 @@ export const FormContainer = styled.div`
       border: none;
       outline: none;
     }
+  }
+
+  p {
+    color: white;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
   }
 `;
 

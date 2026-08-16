@@ -66,6 +66,8 @@ export const RegisteCustomer = () => {
             }}
           />
 
+          <p>Selecione sua cor favorita</p>
+
           <ColorPicker value={favoriteColor} onChange={setFavoriteColor} />
 
           <Button
